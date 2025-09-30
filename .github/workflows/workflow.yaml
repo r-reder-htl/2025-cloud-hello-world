@@ -22,4 +22,8 @@ jobs:
         run: |
           ls ${{ github.workspace }}
           pwd
+          ls 
+          ls ./target
+          pwd
+          java -jar target/hello-1.0-SNAPSHOT.jar
       - run: echo "🍏 This job's status is ${{ job.status }}."
