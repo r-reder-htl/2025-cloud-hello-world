@@ -16,14 +16,14 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
           cache: 'maven'
-          cache-dependency-path: "${{ BACKEND_HOME }}/pom.xml" # optional
+          cache-dependency-path: "${{ env.BACKEND_HOME }}/pom.xml" # optional
       - name: Build with Maven
-        working-directory: BACKEND_HOME
+        working-directory: ${{ env.BACKEND_HOME }}
         run: mvn -B package
       - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
       - run: echo "🖥️ The workflow is now ready to test your code on the runner."
       - name: List all files
-        working-directory: ${{ BACKEND_HOME }}
+        working-directory: ${{ env.BACKEND_HOME }}
         run: |
           ls
           ls ./target
@@ -31,7 +31,7 @@ jobs:
           env
 
       - name: build Docker Image
-        working-directory: ${{ BACKEND_HOME }}
+        working-directory: ${{ env.BACKEND_HOME }}
         run: |
           ls ${{ github.workspace }}
           docker build --file ./src/main/docker/Dockerfile -t ghcr.io/r-reder-htl/helloworld-backend:latest .
