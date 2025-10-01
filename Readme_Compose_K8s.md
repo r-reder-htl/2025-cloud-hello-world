@@ -10,4 +10,5 @@ kubectl apply -f ./postgres.yaml
 watch kubectl get pods
 kubectl get deployment
 kubectl port-forward services/postgres 5432:5432
+kubectl describe pod 
 
