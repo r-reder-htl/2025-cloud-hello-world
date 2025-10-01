@@ -34,6 +34,6 @@ jobs:
         working-directory: ${{ BACKEND_HOME }}
         run: |
           ls ${{ github.workspace }}
-          docker build --file ./src/main/docker/Dockerfile -t ${{ BACKEND_HOME }} .
+          docker build --file ./src/main/docker/Dockerfile -t ghcr.io/r-reder-htl/helloworld-backend:latest .
           docker image ls 
-          docker run ${{ BACKEND_HOME }}
+          docker run ghcr.io/r-reder-htl/helloworld-backend:latest
