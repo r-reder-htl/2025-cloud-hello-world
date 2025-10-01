@@ -60,6 +60,6 @@ jobs:
           file: ${{ env.BACKEND_HOME }}/src/main/docker/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: ghcr.io/${{ env.REPOSITORY }}/helloworld-backend:latest
+          tags: ghcr.io/r-reder-htl/helloworld-backend:latest
         
 
