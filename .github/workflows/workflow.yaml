@@ -36,4 +36,4 @@ jobs:
           ls ${{ github.workspace }}
           docker build --file ./src/main/docker/Dockerfile -t ghcr.io/r-reder-htl/helloworld-backend:latest .
           docker image ls 
-          docker run ghcr.io/r-reder-htl/helloworld-backend:latest
+          #docker run ghcr.io/r-reder-htl/helloworld-backend:latest
