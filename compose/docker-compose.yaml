@@ -1,5 +1,5 @@
 include:
-  - backend.yaml
-#  - keycloak.yaml
   - postgres.yaml
+  - keycloak.yaml
+#  - backend.yaml
 #  - frontend.yaml

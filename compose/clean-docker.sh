@@ -19,4 +19,3 @@ done
 docker container ls
 docker volume ls
 docker image ls
-echo Fertig!

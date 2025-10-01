@@ -14,12 +14,12 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_DB=postgres
     healthcheck:
-          test: pg_isready --dbname=keycloak --username=keycloak
-          interval: 60s
-          timeout: 10s
-          retries: 3
-          start_period: 30s
-          start_interval: 2s
+      test: pg_isready --dbname=keycloak --username=keycloak
+      interval: 60s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+      start_interval: 2s
     depends_on:
       init-container:
         condition:

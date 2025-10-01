@@ -1,0 +1,57 @@
+#@BASE=http://localhost:4200/api
+
+### backend hello ###
+GET {{BACKEND}}/api/hello
+
+### backend hello ###
+GET {{BACKEND}}/api/posts
+
+### Users ###
+GET {{BASE}}/hello
+
+###
+GET {{BASE}}/posts
+Content-Type: application/json
+
+###
+
+GET {{BASE}}/.well-known/openid-configuration
+Accept: application/json
+
+> {%
+    client.global.set("well-known-url", response.body.token_endpoint);
+    client.log("Well-Known-URL: " + client.global.get("well-known-url"));
+%}
+
+### get access token
+
+POST {{well-known-url}}
+Content-Type: application/x-www-form-urlencoded
+
+client_id = backend &
+client_secret = o1BWGJt5QlS0D3yn9HtLXXWI5W6DqjxL &
+grant_type = password &
+username = {{username}} &
+password = {{password}} &
+  #username = student &
+  #password = passme &
+scope = openid
+
+> {%
+    client.global.set("access_token", response.body.access_token);
+    client.log("Bearer: " + client.global.get("access_token"));
+%}
+
+###
+
+GET http://localhost:8080/api/posts
+Accept: application/json
+Authorization: Bearer {{access_token}}
+
+###
+
+GET https://localhost:8080/realms/demo/protocol/openid-connect/userinfo
+Content-Type: application/json
+Authorization: Bearer {{access_token}}
+
+###
