@@ -62,6 +62,8 @@ jobs:
 
       - name: Setup Docker Buildx
         uses: docker/setup-buildx-action@v3
+        with:
+          version: latest
        
 
       - name: Build docker image
