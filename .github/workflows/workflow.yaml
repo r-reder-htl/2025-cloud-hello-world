@@ -41,14 +41,13 @@ jobs:
 
 
       - name: Build docker image
-        working-directory: ${{ env.BACKEND_HOME }}
         uses: docker/build-push-action@v4
         with:
           context: ${{ env.BACKEND_HOME }}
-          file: ./src/main/docker/Dockerfile
+          file: ${{ env.BACKEND_HOME }}/src/main/docker/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
           tags: ghcr.io/${{ env.REPOSITORY }}/helloworld-backend:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
-          
+
