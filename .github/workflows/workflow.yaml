@@ -5,6 +5,10 @@ on: [push]
 env:
   BACKEND_HOME: ./vehicle
 
+permissions:
+  contents: read
+  packages: write
+
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-24.04
