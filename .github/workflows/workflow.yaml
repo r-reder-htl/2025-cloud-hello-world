@@ -17,6 +17,15 @@ jobs:
           java-version: '21'
           cache: 'maven'
           cache-dependency-path: "${{ env.BACKEND_HOME }}/pom.xml" # optional
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+
+
       - name: Build with Maven
         working-directory: ${{ env.BACKEND_HOME }}
         run: mvn -B package
