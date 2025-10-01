@@ -1,8 +1,12 @@
 services:
   backend:
     image: ghcr.io/r-reder-htl/helloworld-backend:latest
-    command: ["sleep", "900"]
     ports:
       - 8666:8080
+           
+    depends_on:
+      postgres:
+        condition: service_healthy
+    
     environment:
       - quarkus.datasource.jdbc.url=jdbc:postgresql://postgres:5432/demo
