@@ -1,6 +1,10 @@
 name: GitHub Actions Demo
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on: [push]
+
+env:
+  BACKEND_HOME: ./vehicle
+
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-24.04
@@ -12,24 +16,24 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
           cache: 'maven'
-          cache-dependency-path: 'hello/pom.xml' # optional
+          cache-dependency-path: "${{ BACKEND_HOME }}/pom.xml" # optional
       - name: Build with Maven
-        working-directory: hello
+        working-directory: BACKEND_HOME
         run: mvn -B package
       - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
       - run: echo "🖥️ The workflow is now ready to test your code on the runner."
-      - name: List files in the repository
-        working-directory: hello
+      - name: List all files
+        working-directory: ${{ BACKEND_HOME }}
         run: |
-          ls ${{ github.workspace }}
-          pwd
+          ls
           ls ./target
           pwd
-          java -jar target/hello-1.0-SNAPSHOT.jar
+          env
+
       - name: build Docker Image
-        working-directory: hello
+        working-directory: ${{ BACKEND_HOME }}
         run: |
           ls ${{ github.workspace }}
-          docker build --file ./src/main/docker/Dockerfile -t irgendwas .
+          docker build --file ./src/main/docker/Dockerfile -t ${{ BACKEND_HOME }} .
           docker image ls 
-          docker run irgendwas
+          docker run ${{ BACKEND_HOME }}
