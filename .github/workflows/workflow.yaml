@@ -30,6 +30,7 @@ jobs:
           pwd
           env
 
+      
       - name: build Docker Image
         working-directory: ${{ env.BACKEND_HOME }}
         run: |
@@ -37,3 +38,17 @@ jobs:
           docker build --file ./src/main/docker/Dockerfile -t ghcr.io/r-reder-htl/helloworld-backend:latest .
           docker image ls 
           #docker run ghcr.io/r-reder-htl/helloworld-backend:latest
+
+
+      - name: Build docker image
+        working-directory: ${{ env.BACKEND_HOME }}
+        uses: docker/build-push-action@v4
+        with:
+          context: ${{ env.BACKEND_HOME }}
+          file: ./src/main/docker/Dockerfile
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: ghcr.io/${{ env.REPOSITORY }}/helloworld-backend:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          
