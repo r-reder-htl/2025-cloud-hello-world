@@ -3,6 +3,8 @@ docker push ghcr.io/r-reder-htl/helloworld-backend
 
 
 ---
+
+# mit minikube arbeiten
 minikube start
 minikube dashboard
 
@@ -13,7 +15,20 @@ kubectl port-forward services/postgres 5432:5432
 kubectl describe pod a...
 
 kubectl port-forward services/appsrv 8080:8080
+# minikube zurück
+minikube delete
+minikube stop
 
+kubectl config use-context leocloud
+kubectl config use-context minikube
+
+
+# um auf die leocloud zu wechseln
+rm ~/.kube/config
+leocloud auth login
+watch kubectl get pods
+kubectl apply -f ./postgres.yaml
+kubectl apply -f ./app...
 ---
 testj01-testj15
 Abc12345
