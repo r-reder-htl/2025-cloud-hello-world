@@ -79,7 +79,7 @@ spec:
             periodSeconds: 5
           livenessProbe:
             exec:
-              command: ["pg_isready", "--dbname=keycloak", "--username=keycloak"]
+              command: ["pg_isready", "--dbname=demo", "--username=demo"]
           volumeMounts:
             - name: postgres-data
               mountPath: /var/lib/postgresql/data
