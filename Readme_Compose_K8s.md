@@ -9,6 +9,9 @@ minikube start
 minikube dashboard
 
 kubectl apply -f ./postgres.yaml
+# löschen nach apply mit delete
+kubectl delete -f ./k8s/ingress4StandardWeb.yaml 
+# ...
 watch kubectl get pods
 kubectl get deployment
 kubectl port-forward services/postgres 5432:5432
