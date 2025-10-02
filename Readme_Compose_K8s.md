@@ -16,6 +16,8 @@ watch kubectl get pods
 kubectl get deployment
 kubectl port-forward services/postgres 5432:5432
 kubectl describe pod a...
+kubectl describe ingress
+kubectl get service
 
 kubectl port-forward services/appsrv 8080:8080
 # minikube zurück
