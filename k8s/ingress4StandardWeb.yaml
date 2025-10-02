@@ -29,6 +29,7 @@ data:
                 Mein Namespace ist <code>student-seminar-reder</code> und 
                 meine Anwendung befindet sich hier: <a href="https://seminar-reder.cloud.htl-leonding.ac.at" target="_blank">https://seminar-reder.cloud.htl-leonding.ac.at</a>
               </div>
+                <div><a href="https://seminar-reder.cloud.htl-leonding.ac.at/api/vehicles" target="_blank">My vehicles</a></div>
               <div>
                 Mein Dashboard kann ich öffnen, indem ich im Terminal eingebe: <p><code>leocloud dashboard</code></p>
               </div>
@@ -85,7 +86,7 @@ kind: Ingress
 metadata:
   name: leocloud-nginx-demo-root2
 spec:
-  ingressClassName: nginx2
+  ingressClassName: nginx
   rules:
   - host: seminar-reder.cloud.htl-leonding.ac.at
     http:
