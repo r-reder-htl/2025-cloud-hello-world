@@ -1,0 +1,22 @@
+# Demo Nginx Deployment to display information for the authenticated user
+###
+###
+# config map mounted as index.html
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: leocloud-nginx-demo-root
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: seminar-reder.cloud.htl-leonding.ac.at
+      http:
+        paths:
+          - path: /api
+            pathType: Prefix
+            backend:
+              service:
+                name: appsrv
+                port:
+                  number: 8080
